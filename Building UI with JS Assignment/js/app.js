@@ -1,3 +1,11 @@
+$.getJSON("https://www.swollenhippo.com/getEmployeesByAPIKey.php?APIKey=Mickey2021!"), function(result){
+    console.log(result);
+    arrEmployees = result;
+    buildEmployeeCar();
+    $.each(result,function(i,person){
+        $('#txtEmail').val(person.Email);
+    })
+}
 
 function buildEmployeeCard (){
     $.each(arrEmployees,function(i,person){
@@ -27,16 +35,10 @@ function buildEmployeeCard (){
         strHTML += '</div>';
         strHTML += '</div>';    
         $('body').append(strHTML);
+        $('#tblEmployees tbody').append('<tr><td>' + person.FirstName + '</td><td>' + person.LastName +'</td></tr>');
     })
-}
+    $('#tblEmployees').DataTable();
 
-$.getJSON("https://www.swollenhippo.com/getEmployeesByAPIKey.php?APIKey=Mickey2021!"), function(result){
-    console.log(result);
-    arrEmployees = result;
-    buildEmployeeCar();
-    $.each(result,function(i,person){
-        $('#txtEmail').val(person.Email);
-    })
 }
 
 $('btnCalculate').click(function(){
