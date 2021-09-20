@@ -1,0 +1,23 @@
+body{
+    background-image: url("../images/background.jpg");
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    background-size: auto;
+}
+
+h3{
+    padding-left: 10px;
+}
+
+#GoalPay{
+    padding-left: 10px;
+}
+
+h1{
+    padding-left: 10px;
+}
+
+p{
+    padding-left: 10px;
+}
