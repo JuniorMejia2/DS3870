@@ -6,18 +6,23 @@ body{
     background-size: auto;
 }
 
-h3{
-    padding-left: 10px;
+#divEmployeeContainer  {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-#GoalPay{
-    padding-left: 10px;
+#divEmployeeContainer  > .col-3 {
+    display: inline-block;
 }
 
-h1{
-    padding-left: 10px;
+
+#divEmployeeContainer::-webkit-scrollbar {
+    display: none;
 }
 
-p{
-    padding-left: 10px;
+#tblEmployeePay_wrapper {
+    margin-top:10px;
 }
