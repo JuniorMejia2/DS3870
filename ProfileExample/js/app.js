@@ -40,8 +40,8 @@ $('#cboEmployeeType').change(function() {
     if($('#cboEmployeeType').val()== 'FULL'){
         //$('divHours').slideup();
         //$('divHours').css('display','none')
-        $('divHours').addClass('b-none','none')
+        $('divHours').addClass('b-none')
     }else {
         $('divHours').slideDown();
     }
-})
+})                        
