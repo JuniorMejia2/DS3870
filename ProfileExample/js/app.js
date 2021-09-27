@@ -44,8 +44,4 @@ $('#cboEmployeeType').change(function() {
     }else {
         $('divHours').slideDown();
     }
-<<<<<<< HEAD
-}                           
-=======
-})
->>>>>>> 27fa4e3fcb25d0db6c4122d62894dd6a03092acf
+})                        
