@@ -6,7 +6,9 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Data.SqlClient;
 
 namespace ISISGetEmployee
 {
@@ -52,6 +54,9 @@ namespace ISISGetEmployee
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
+
+            string strConnection = "Server = mySQLServer\\myInstanceName; Database=DBSpies; User Id = myUsername; Password = myPassword;";
+
             string strCodeName = req.Query["CodeName"];
             string strAGency = req.Query["Agency"];
             log.LogInformation("HTTP trigger on getEmployee processed a request for: " + strCodeName);
@@ -61,7 +66,7 @@ namespace ISISGetEmployee
 
             Employee Archer = new Employee("Sterling", "Archer", "Duchess", "Field Agent", "Active", 23.75, 18.50, "ISIS",ISIS);
             Employee Lana = new Employee("Lana", "Kane", "Truckasaurus", "Field Agent", "Active", 21.50, 23.5, "ISIS", ISIS);
-            Employee Pam = new Employee("Pam", "Poovey", "Snowball", "Hunam Resoruces", "Active", 49.00, 12, "ISIS", ISIS);
+            Employee Pam = new Employee("Pam", "Poovey", "Snowball", "Human Resoruces", "Active", 49.00, 12, "ISIS", ISIS);
             Employee Barry = new Employee("Barry", "Cyborg", "Duchess", "Field Agent ", "Active", 23.75, 18.50, "CIA", CIA);
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
@@ -69,17 +74,18 @@ namespace ISISGetEmployee
 
             List<Employee> arrEmployees = new Employee[] { Archer, Lana, Pam, Barry };
 
-            list<Employee> 1stFoundEmployee = new List <Employee>();
+            List<Employee> firstFoundEmployee = new List <Employee>();
             foreach (Employee empCurrent in arrEmployees)
             {
                 if (strCodeName == empCurrent.CodeName)
                 {
-                    1stFoundEmployee.Add(empCurrent);
+
+                    firstFoundEmployee.Add(empCurrent);
                 }
             }
-            if(1stEMployeeFound.Count > 0)
+            if(firstFoundEmployee.Count > 0)
             {
-                return new OkObjectResult(1stFoundEMployee);
+                return new OkObjectResult(firstFoundEmployee);
             }
             else
             {
