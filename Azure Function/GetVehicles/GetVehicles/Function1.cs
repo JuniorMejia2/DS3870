@@ -6,6 +6,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace GetVehicles
@@ -15,11 +16,11 @@ namespace GetVehicles
         private class Brand
         {
             public string Name { get; set; }
-            public string StreetAddress {get; set;}
+            public string StreetAddress { get; set; }
             public string City { get; set; }
             public string State { get; set; }
             public string Zip { get; set; }
-            public Brand (string strName, string strStreetAddress, string strCity, string strState, string strZip) 
+            public Brand(string strName, string strStreetAddress, string strCity, string strState, string strZip)
             {
                 Name = strName;
                 StreetAddress = strStreetAddress;
@@ -29,13 +30,13 @@ namespace GetVehicles
             }
 
         }
-        private class Vehicle 
-        { 
+        private class Vehicle
+        {
             public object Brand { get; set; }
             public string Model { get; set; }
             public int Year { get; set; }
             public double MPG { get; set; }
-            public Vehicle (object objBrand, string strModel, int intYear, double dblMPG) 
+            public Vehicle(object objBrand, string strModel, int intYear, double dblMPG)
             {
                 Brand = objBrand;
                 Model = strModel;
@@ -43,30 +44,48 @@ namespace GetVehicles
                 MPG = dblMPG;
             }
         }
-    }
-    public static class Function1
-    {
-        [FunctionName("Function1")]
+        
+        [FunctionName("getVehicles")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
-            ILogger log)
+    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+    ILogger log)
         {
+            string strName = req.Query["Name"];
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            Brand 
+            Brand Toyota = new Brand("Toyota", "1540 Interstate Dr", "Cookeville", "TN", "38501");
+            Brand Ford = new Brand("Ford", "1600 Interstate Dr", "CookeVille", "TN", "38501");
+            Brand Volkswagen = new Brand("VolksWaggon", "2431 Gallatin Pike", "Madison", "TN", "37115");
 
-
-            string name = req.Query["name"];
+            Vehicle GR86 = new Vehicle("Toyota", "GR86", 2021, 21);
+            Vehicle Supra = new Vehicle("Toyora", "Supra", 2021, 25);
+            Vehicle Ranger = new Vehicle("Ford", "Ranger", 2021, 21);
+            Vehicle Mustang = new Vehicle("Ford", "Mustang", 2021, 21);
+            Vehicle GolfGTI = new Vehicle("Volkswagen", "GolfGTI", 2021, 30);
+            Vehicle Jetta = new Vehicle("Volkswagen", "Jetta", 2021, 30);
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
 
-            string responseMessage = string.IsNullOrEmpty(name)
-                ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
+            List<Brand> arrBrand = new List<Brand> arrBrand.Add( Toyota, Ford, Volkswagen);
 
-            return new OkObjectResult(responseMessage);
+            List<Brand> firstBrand = new List<Brand>();
+            foreach (Brand brdVehicle in arrBrand) 
+            {
+                if (strName == brdVehicle.Name) 
+                {
+                    firstBrand.Add(brdVehicle);
+                }
+            }
+            if(firstBrand.Count > 0) 
+            {
+                return new OkObjectResult(firstBrand);            
+            }
+            else 
+            {
+                return new OkObjectResult("Brand Not Found");            
+            }
+
         }
     }
 }

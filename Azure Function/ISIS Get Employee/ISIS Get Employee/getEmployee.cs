@@ -58,7 +58,7 @@ namespace ISISGetEmployee
             string strConnection = "Server = mySQLServer\\myInstanceName; Database=DBSpies; User Id = myUsername; Password = myPassword;";
 
             string strCodeName = req.Query["CodeName"];
-            string strAGency = req.Query["Agency"];
+            string strAgency = req.Query["Agency"];
             log.LogInformation("HTTP trigger on getEmployee processed a request for: " + strCodeName);
 
             Agency ISIS = new Agency ("ISIS", "10 E Broad st", "931-526-2125");
@@ -72,7 +72,7 @@ namespace ISISGetEmployee
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
 
-            List<Employee> arrEmployees = new Employee[] { Archer, Lana, Pam, Barry };
+            List<Employee> arrEmployees = new List<Employee> arrEmployees.Add{ Archer, Lana, Pam, Barry};
 
             List<Employee> firstFoundEmployee = new List <Employee>();
             foreach (Employee empCurrent in arrEmployees)
