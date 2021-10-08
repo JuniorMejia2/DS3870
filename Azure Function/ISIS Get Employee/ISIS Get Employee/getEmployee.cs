@@ -72,7 +72,7 @@ namespace ISISGetEmployee
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
 
-            List<Employee> arrEmployees = new List<Employee> arrEmployees.Add{ Archer, Lana, Pam, Barry};
+            Employee[] arrEmployees = new Employee[] { Archer, Lana, Pam, Barry };
 
             List<Employee> firstFoundEmployee = new List <Employee>();
             foreach (Employee empCurrent in arrEmployees)

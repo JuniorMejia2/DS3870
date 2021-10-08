@@ -50,7 +50,9 @@ namespace GetVehicles
     [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
     ILogger log)
         {
-            string strName = req.Query["Name"];
+            string strBrand = req.Query["Brand"];
+            string strModel = req.Query["Model"];
+
             log.LogInformation("C# HTTP trigger function processed a request.");
 
             Brand Toyota = new Brand("Toyota", "1540 Interstate Dr", "Cookeville", "TN", "38501");
@@ -67,12 +69,17 @@ namespace GetVehicles
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
 
-            List<Brand> arrBrand = new List<Brand> arrBrand.Add( Toyota, Ford, Volkswagen);
 
+            Brand[] arrBrand = new Brand[] { Toyota, Ford, Volkswagen };
             List<Brand> firstBrand = new List<Brand>();
+
+            Vehicle[] arrVehicles = new Vehicle[] { GR86, Supra, Ranger, Mustang, GolfGTI, Jetta };
+            List<Vehicle> firstVehicle = new List<Vehicle>();
+
+
             foreach (Brand brdVehicle in arrBrand) 
             {
-                if (strName == brdVehicle.Name) 
+                if (strBrand == brdVehicle.Name) 
                 {
                     firstBrand.Add(brdVehicle);
                 }
@@ -85,7 +92,6 @@ namespace GetVehicles
             {
                 return new OkObjectResult("Brand Not Found");            
             }
-
         }
     }
 }
