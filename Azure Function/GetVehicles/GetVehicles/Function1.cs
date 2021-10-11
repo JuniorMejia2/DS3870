@@ -77,11 +77,11 @@ namespace GetVehicles
             List<Vehicle> firstVehicle = new List<Vehicle>();
 
 
-            foreach (Brand brdVehicle in arrBrand) 
+            foreach (Brand brdBrand in arrBrand) 
             {
-                if (strBrand == brdVehicle.Name) 
+                if (strBrand == brdBrand.Name) 
                 {
-                    firstBrand.Add(brdVehicle);
+                    firstBrand.Add(brdBrand);
                 }
             }
             if(firstBrand.Count > 0) 
