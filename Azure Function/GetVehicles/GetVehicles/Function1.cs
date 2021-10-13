@@ -92,6 +92,8 @@ namespace GetVehicles
             {
                 return new OkObjectResult("Brand Not Found");            
             }
+            else if (strModel == firstVehicle.Model) ;
+
         }
     }
 }
