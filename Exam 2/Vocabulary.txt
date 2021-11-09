@@ -1,0 +1,28 @@
+Junior Mejia
+11/5/2021
+DS3870-001
+				EXAM 2 – VOCABULRAY
+
+1.	LAMP- is a technology stack used to create data-driven applications. It stands for Linux, Apache, MySQL, and PHP. All these combined allow web applications to function fluently for the end-user. The lamp stack is the most popular solution stack because of its availability as open sources software and its secure and reliable platforms.
+
+2.	JSON- JavaScript Object Notation, commonly known as JSON, is a data format used for web applications and data transfers and built with object-valued pairs allowing easy readability from humans and machines alike. Its popularity stems from its easy-to-read and write format, simple syntax, and support from most back-end technologies.
+
+3.	Azure Function- is a serverless solution that allows developers to save costs and develop easily maintainable servers while keeping everything up to date. Some major advantages are security, disaster recovery, and flexibility. It was created by Microsoft along with its Azure services. 
+
+4.	Monolithic Web Application- is a web application built as a single-tier software package. The entire web application is in a single layer allowing for easy maintainability, but it comes at a cost. If one service is down, then the entire application is down.
+
+5.	SPA- Single Page Application is a web application that dynamically writes the data allowing for multiple queries to be executed simultaneously. This allows the application to feel more like a native application while improving transition times.
+
+6.	Microservices- Similar to Monolithic Web Applications, it is an architectural style that allows for loosely compiled code that is highly maintainable.
+
+7.	The Cloud- Is an on-demand computer resource that allows users to remotely store their services without owning the location or the specific hardware needed to run servers. This allows for the storage of large amounts of data and is great for disaster relief. In turn, this service could come with issues such as bandwidth loss and cannot handle issues on your own.
+ 
+
+8.	NuGet Packages- is a class of libraries and frameworks used amongst developers to share and reuse usable code. It also allows the user to use multiple languages in one application, such as API’s
+
+9.	CoLo- it is a type of data center used for companies to “rent” server hardware. Its inexpensive services allow small companies to grow their IT infrastructure and store their servers off-site in case of a disaster. 
+
+10.	Scope- the area where an item such as functions can be named and recognized.
+
+11.	MongoDB- is a NoSQL database program used as a file storage system. It can be any file size and type and used to transfer thousands of records a second without affecting performance. 
+

@@ -188,6 +188,169 @@ namespace SpyDatabase
             {
                 return new OkObjectResult(ex.Message.ToString());
             }
+
+
+
+
+
+
+            // 1.--------------------------------------------------
+            string strQuery = "DELECT FROM tblPositiosns WHERE PositionName= '@parPositionsName' ";
+            DataSet dsPosition = new DataSet();
+            string strConnection = "Server=tcp:myserver.database.windows.net,1433;Database=myDataBase;UserID=mylogin@myserver;Password=myPassword;Trusted_Connection=False;Encrypt=True;";
+            try
+            {
+                using (SqlConnection conPosition = new SqlConnection(strConnection))
+                using (SqlCommand comPosistion = new SqlCommand(strQuery, conPosition))
+                {
+                    SqlParameter parPositionsName = new SqlParameter("parPositionsName", SqlDbType.VarChar);
+                    parPositionsName.Value = parPositionsName;
+                    comPosistion.Parameters.Add(parPositionsName);
+
+                    comPosistion.Connection = conPosition;
+                    comPosistion.CommandText = strQuery;
+                    Connection.Open()
+                    comPosistion.ExecuteNonQuerey();
+                    comPosistion.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                return new OkObjectResult(ex.Message.ToString());
+            }
+
+
+            2.
+            string strQuery = "SELECT StateCode, Description FROM tblStates";
+            DataSet dsState = new DataSet();
+            string strConnection = "Server=tcp:myserver.database.windows.net,1433;Database=myDataBase;UserID=mylogin@myserver;Password=myPassword;Trusted_Connection=False;Encrypt=True;";
+            try
+            {
+                using (SqlConnection conStates = new SqlConnection(strConnection))
+                using (SqlCommand comStates = new SqlCommand(strQuery, conStates))
+                {
+                    SqlDataAdapter dsStates = new SqlDataAdapter(comStates);
+                    dsStates.Fill(dsState);
+                    return new OkObjectResult(JsonConvert.SerializeObject(dsSpies.Tables[3]));
+
+                    comStates.Connection = conStates;
+                    comStates.CommandText = strQuery;
+                    Connection.Open()
+                    comStates.ExecuteNonQuerey();
+                    comStates.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                return new OkObjectResult(ex.Message.ToString());
+            }
+
+
+            3.
+            string strQuery = "SELECT * FROM tblEmployees WHERE LastName= '@parLastName'";
+            DataSet dsEmployeees = new DataSet();
+            string strConnection = "Server=tcp:myserver.database.windows.net,1433;Database=myDataBase;UserID=mylogin@myserver;Password=myPassword;Trusted_Connection=False;Encrypt=True;";
+            try
+            {
+                using (SqlConnection conEmployeees = new SqlConnection(strConnection))
+                using (SqlCommand comEmployeees = new SqlCommand(strQuery, conEmployeees))
+                {
+                    SqlParameter parLastName = new SqlParameter("parLastName", SqlDbType.VarChar);
+                    parLastName.Value = parLastName;
+                    comEmployeees.Parameters.Add(parLastName);
+
+                    comEmployeees.Connection = conEmployeees;
+                    comEmployeees.CommandText = strQuery;
+                    Connection.Open()
+                    comEmployeees.ExecuteNonQuerey();
+                    comEmployeees.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                return new OkObjectResult(ex.Message.ToString());
+            }
+
+            4.
+             string strQuery = "INSERT INTO tblInvoice ('InvoiceNumber','CustomerID','Amount', 'Paid') VALUES ('@2021-0000070','@par317A','@212.31','@0')";
+            DataSet dsInvoice = new DataSet();
+            string strConnection = "Server=tcp:myserver.database.windows.net,1433;Database=myDataBase;UserID=mylogin@myserver;Password=myPassword;Trusted_Connection=False;Encrypt=True;";
+            try
+            {
+                using (SqlConnection conInvoice = new SqlConnection(strConnection))
+                using (SqlCommand comInvoice = new SqlCommand(strQuery, conInvoice))
+                {
+                    SqlParameter parInvoiceNumber = new SqlParameter("parInvoiceNumber", SqlDbType.VarChar);
+                    parInvoiceNumber.Value = "2021 - 0000070";
+                    comInvoice.Parameters.Add(parInvoiceNumber);
+
+                    SqlParameter parCustomerID = new SqlParameter("parCustomerID", SqlDbType.VarChar);
+                    parCustomerID.Value = "317A";
+                    comInvoice.Parameters.Add(parCustomerID);
+
+                    SqlParameter parAmount = new SqlParameter("parAmount", SqlDbType.Decimal);
+                    parAmount.Value = "212.31";
+                    comInvoice.Parameters.Add(parAmount);
+
+                    SqlParameter parPaid = new SqlParameter("parPaid", SqlDbType.Bit);
+                    parPaid.Value = "0";
+                    comInvoice.Parameters.Add(parPaid);
+
+                    comInvoice.Connection = conInvoice;
+                    comInvoice.CommandText = strQuery;
+                    Connection.Open()
+                    comInvoice.ExecuteNonQuerey();
+                    comInvoice.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                return new OkObjectResult(ex.Message.ToString());
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
     }
+
+}
+
+
+
+
+
+
+
+
+
+
+
 }

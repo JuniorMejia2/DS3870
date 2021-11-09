@@ -59,12 +59,6 @@ namespace GetVehicles
             Brand Ford = new Brand("Ford", "1600 Interstate Dr", "CookeVille", "TN", "38501");
             Brand Volkswagen = new Brand("VolksWaggon", "2431 Gallatin Pike", "Madison", "TN", "37115");
 
-            Vehicle GR86 = new Vehicle("Toyota", "GR86", 2021, 21);
-            Vehicle Supra = new Vehicle("Toyora", "Supra", 2021, 25);
-            Vehicle Ranger = new Vehicle("Ford", "Ranger", 2021, 21);
-            Vehicle Mustang = new Vehicle("Ford", "Mustang", 2021, 21);
-            Vehicle GolfGTI = new Vehicle("Volkswagen", "GolfGTI", 2021, 30);
-            Vehicle Jetta = new Vehicle("Volkswagen", "Jetta", 2021, 30);
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
@@ -73,8 +67,6 @@ namespace GetVehicles
             Brand[] arrBrand = new Brand[] { Toyota, Ford, Volkswagen };
             List<Brand> firstBrand = new List<Brand>();
 
-            Vehicle[] arrVehicles = new Vehicle[] { GR86, Supra, Ranger, Mustang, GolfGTI, Jetta };
-            List<Vehicle> firstVehicle = new List<Vehicle>();
 
 
             foreach (Brand brdBrand in arrBrand) 
@@ -92,8 +84,6 @@ namespace GetVehicles
             {
                 return new OkObjectResult("Brand Not Found");            
             }
-            else if (strModel == firstVehicle.Model) ;
-
         }
     }
 }
